@@ -72,6 +72,13 @@ impl Worker {
 
             println!("Worker {} got a job; executing.", id);
 
+            // Send cannot be statically determined but this
+            // pattern will eventually be supported
+            // (*job)()
+
+            // until then, we must make a public type with a
+            // trait which is similar to an accessor method
+            // which copies and returns
             job.call_box();
         });
 
